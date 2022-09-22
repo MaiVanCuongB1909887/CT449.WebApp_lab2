@@ -7,6 +7,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+
 app.use("/api/contacts", contactsRouter);
 
 //handle 404 response
@@ -23,8 +24,8 @@ app.use((err, req, res, next) => {
     //Middleware xu ly loi tap trung
     //Trong cac doan code xu ly o cac route, goi next(error)
     //  se chuyen ve middleware xu ly loi nay
-    return res.status(error.statusCode || 500).json({
-        message: error.message || "Internal Server Error",
+    return res.status(err.statusCode || 500).json({
+        message: err.message || "Internal Server Error",
     });
 });
 
