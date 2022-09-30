@@ -5,7 +5,7 @@ class ContactService {
         this.Contact = client.db().collection("contacts");
     }
     //Dinh nghia cac phuong thuc truy xuat CSDL su dung mongodb API
-    extractContactData(payload) {
+    extractConactData(payload) {
         const contact = {
             name: payload.name,
             email: payload.email,
@@ -14,7 +14,7 @@ class ContactService {
             favorite: payload.favorite,
         };
         //Remove undefined fields
-        Objects.keys(contact).forEach(
+        Object.keys(contact).forEach(
             (key) => contact[key] === undefined && delete contact[key]
         );
         return contact;
